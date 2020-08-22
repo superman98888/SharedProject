@@ -10,18 +10,18 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class Default1Controller : Controller
+    public class ProductController : Controller
     {
         private CS4PEEntities db = new CS4PEEntities();
 
-        // GET: /Default1/
+        // GET: /Product/
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.Category);
             return View(products.ToList());
         }
 
-        // GET: /Default1/Details/5
+        // GET: /Product/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,14 +36,14 @@ namespace WebApplication1.Controllers
             return View(product);
         }
 
-        // GET: /Default1/Create
+        // GET: /Product/Create
         public ActionResult Create()
         {
             ViewBag.idCategory = new SelectList(db.Categories, "id", "Name");
             return View();
         }
 
-        // POST: /Default1/Create
+        // POST: /Product/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -61,7 +61,7 @@ namespace WebApplication1.Controllers
             return View(product);
         }
 
-        // GET: /Default1/Edit/5
+        // GET: /Product/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,7 +77,7 @@ namespace WebApplication1.Controllers
             return View(product);
         }
 
-        // POST: /Default1/Edit/5
+        // POST: /Product/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -94,7 +94,7 @@ namespace WebApplication1.Controllers
             return View(product);
         }
 
-        // GET: /Default1/Delete/5
+        // GET: /Product/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +109,7 @@ namespace WebApplication1.Controllers
             return View(product);
         }
 
-        // POST: /Default1/Delete/5
+        // POST: /Product/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
